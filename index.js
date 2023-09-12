@@ -1,36 +1,50 @@
-const x = "X";
-const o = "O";
-let estadoJuego = "P1";
+const cuadrados = Array.from(document.querySelectorAll(".cuadrado"));
 const modal = document.querySelector("dialog");
 const textoModal = modal.querySelector("h2");
+let estadoJuego = "P1";  
 
-const cuadrados = Array.from(document.querySelectorAll(".cuadrado"));
 
-cuadrados.forEach((cuadrado, i) => {
-  cuadrado.addEventListener("click", () => {
+document.addEventListener("DOMContentLoaded", function guardarJugadores() {
+  var txtP1 = document.getElementById("p1");
+  var txtP2 = document.getElementById("p2");
+  var boton = document.getElementById("jugadores");
+  const x = "X";
+  const o = "O";
+  
+
+});
+
+cuadrados.forEach(function(cuadrado, i) {
+  cuadrado.addEventListener("click", function() {
     if (estadoJuego != "pausa") {
-      if (cuadrado.textContent !== "") return;
-
+      // Si el juego está en pausa, no hagas nada.
+          if (cuadrado.textContent === "") {
+      // Si el cuadrado está vacío, continúa.
       if (estadoJuego === "P1") {
         cuadrado.innerText = "X";
       } else {
         cuadrado.innerText = "O";
       }
 
-      const posicionGanadora = siSeGano();
-      if (typeof posicionGanadora === "object") {
-        quienGano(posicionGanadora);
+      const ganador = siSeGano();
+      if (typeof ganador === "object") {
+        quienGano(ganador);
         return;
       }
-      if (posicionGanadora === "empate") {
+
+      if (ganador === "empate") {
         mostrarModal("Empataron rey");
       }
+
       if (estadoJuego === "P1") {
         estadoJuego = "P2";
       } else {
         estadoJuego = "P1";
-      }
+      } // Alternar turnos.
     }
+    }
+
+
   });
 });
 
@@ -77,14 +91,17 @@ function quienGano(posicionGanadora) {
   posicionGanadora.forEach(posicion => {
     cuadrados[posicion].classList.toggle("ganador", true);
   });
+
+  
   mostrarModal("Gano el Jugador: " + estadoJuego);
   estadoJuego = "pausa";
 }
 
 function mostrarModal(texto) {
   textoModal.innerText = texto;
-  modal.showModal();
+  modal.setAttribute("open", "true"); // Agregar el atributo "open"
 }
+
 modal.querySelector("button").addEventListener("click", () => {
   cuadrados.forEach(cuadrado => {
     cuadrado.textContent = "";

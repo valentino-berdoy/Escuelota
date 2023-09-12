@@ -1,5 +1,6 @@
 :root{
     --color-primario: indigo;
+    --color-secundario: #6C3483;
     --linea-style: 10px solid var(--color-primario);
 }
 
@@ -25,6 +26,33 @@ h2{
     line-height: 1.5;
 
 }
+
+h3{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    font-family: Helvetica, sans-serif;
+    color: var(--color-primario);
+}
+
+input{
+    height: 25px;
+    width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    margin-right: 20px;
+    background-color: gray;
+    border: var(--color-secundario) solid;
+    color: var(--color-primario);
+
+}
+
+input::placeholder{
+    color: var(--color-secundario);
+    text-decoration: underline;
+}
+
+
 .botonReiniciar{
     font-family: Arial, Helvetica, sans-serif;
     display: flexbox;
@@ -34,7 +62,7 @@ h2{
     border: 3px solid indigo;
     border-radius: 6px;
     cursor: pointer;
-    color: indigo;
+    color: var(--color-secundario);
     transition: background-color 0.1 ease;
     font-size: large;
     text-align: center;
@@ -44,7 +72,36 @@ h2{
     background-color:indigo;
     color: white;
     text-decoration: blink;
-  }
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+  }  
+
+.botonJugar{
+    display: flex;
+    margin-top: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    gap: 10px 10px;
+    padding: 10px 20px;
+    background-color: #17202AFF;
+    border: 3px solid indigo;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #6C3483;
+    font-size: large;
+    text-align: center;
+    text-decoration: none;
+}
+
+.botonJugar:hover{
+    background-color:indigo;
+    color: white;
+    text-decoration: blink;
+}
 
 #tablero{
     display: grid;

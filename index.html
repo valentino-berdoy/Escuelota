@@ -9,21 +9,23 @@
 </head>
 <body>
     <h1>Bienvenido al Ta-Te-Ti</h1>
-    <div id="tablero">
-        <div class="cuadrado arriba"></div>
-        <div class="cuadrado arriba medio"></div>
-        <div class="cuadrado arriba"></div>
-        <div class="cuadrado "></div>
-        <div class="cuadrado medio"></div>
-        <div class="cuadrado "></div>
-        <div class="cuadrado abajo"></div>
-        <div class="cuadrado abajo medio"></div>
-        <div class="cuadrado abajo"></div>
+    <h3>Nombre del Jugador "X"</h3>
+    <div class="contenedor"> 
+        <input type="text" id="p1" placeholder="Jugador X">
     </div>
-    <dialog type="modal">
-        <h2></h2>
-        <button class="botonReiniciar">Reiniciar</button>
-    </dialog>
+    <h3>Nombre del Jugador "O"</h3>
+    <div class="contenedor"> 
+        <input type="text" id="p2" placeholder="Jugador O">
+    </div>
+    <br>
+    <div class="contenedor">    
+        <a href="juego.html">
+            <button class="botonJugar" id="jugadores" >Jugar</button>
+        </a>
+    </div>
+
 </body>
+<script src="variables.js" defer></script>
 <script src="index.js" defer></script>
+
 </html>
