@@ -8,6 +8,30 @@
 </head>
 <body>
     <h1>Bienvenido al Ta-Te-Ti</h1>
+    <dialog type="modal" id="modalInicio" >
+
+        <h3>Nombre del Jugador "X"</h3>
+
+        <div class="contenedor">
+          <input type="text" id="p1" placeholder="Jugador X" class="input" />
+        </div>
+    
+        <h3>Nombre del Jugador "O"</h3>
+        <div class="contenedor">
+          <input type="text" id="p2" placeholder="Jugador O" class="input" />
+        </div>
+    
+        <br />
+    
+        <div class="contenedor">
+          <button onclick="guardarJugadores()" class="botonJugar" id="jugadores">Jugar</button>
+        </div>
+
+    </dialog>
+   
+    <h4>Turno de:</h4>
+    <h4><span id="turno"></span></h4>
+    
     <div id="tablero">
         <div class="cuadrado arriba"></div>
         <div class="cuadrado arriba medio"></div>
@@ -19,12 +43,12 @@
         <div class="cuadrado abajo medio"></div>
         <div class="cuadrado abajo"></div>
     </div>
-    <dialog type="modal">
+
+    <dialog type="modal" id="modalReinicio">
         <h2></h2>
         <button class="botonReiniciar">Reiniciar</button>
     </dialog>
-</body>
-<script src="jugadores.js" defer></script>
-<script src="index.js" defer></script>
 
+</body>
+<script src="index.js" defer></script>
 </html>

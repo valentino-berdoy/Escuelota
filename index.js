@@ -1,28 +1,13 @@
-function guardarJugadores() {
-  var inputElement1 = document.getElementById("p1").value;
-  var inputElement2 = document.getElementById("p2").value;
-
-  sessionStorage.setItem("inputElement1", inputElement1);
-  sessionStorage.setItem("inputElement2", inputElement2);
-  var jugador1 = sessionStorage.getItem("inputElement1");
-  var jugador2 = sessionStorage.getItem("inputElement2");
-
-  console.log("Nombre del Jugador X:", jugador1);
-  console.log("Nombre del Jugador O:", jugador2);
-  
-  // Redirigir a la página "juego.html"
-  window.location.href = "juego.html";
-}
-
+const modal2 = document.getElementById("modalInicio");
 const cuadrados = Array.from(document.querySelectorAll(".cuadrado"));
-const modal = document.querySelector("dialog");
-const textoModal = modal.querySelector("h2");
+const modal1 = document.getElementById("modalReinicio");
+const textoModal = modal1.querySelector("h2");
 let estadoJuego = "P1";  
 const x = "X";
 const o = "O";
+turnito = document.getElementById("turno");
 
-guardarJugadores()
-
+modal2.showModal();
 
 
 cuadrados.forEach(function(cuadrado, i) {
@@ -33,8 +18,10 @@ cuadrados.forEach(function(cuadrado, i) {
       // Si el cuadrado está vacío, continúa.
       if (estadoJuego === "P1") {
         cuadrado.innerText = "X";
+        turnito.textContent = jugador2;
       } else {
         cuadrado.innerText = "O";
+        turnito.textContent = jugador1;
       }
 
       const ganador = siSeGano();
@@ -44,7 +31,7 @@ cuadrados.forEach(function(cuadrado, i) {
       }
 
       if (ganador === "empate") {
-        mostrarModal("Empataron rey");
+        mostrarModal("Empataron :0");
       }
 
       if (estadoJuego === "P1") {
@@ -55,9 +42,23 @@ cuadrados.forEach(function(cuadrado, i) {
     }
     }
 
-
   });
 });
+
+function guardarJugadores() {
+  var inputElement1 = document.getElementById("p1").value;
+  var inputElement2 = document.getElementById("p2").value;
+
+  sessionStorage.setItem("inputElement1", inputElement1);
+  sessionStorage.setItem("inputElement2", inputElement2);
+  jugador1 = sessionStorage.getItem("inputElement1");
+  jugador2 = sessionStorage.getItem("inputElement2");
+
+  console.log("Nombre del Jugador X:", jugador1);
+  console.log("Nombre del Jugador O:", jugador2);
+
+  return jugador1, jugador2
+}
 
 function siSeGano() {
   const tablero = cuadrados.map(cuadrado => cuadrado.textContent);
@@ -102,21 +103,37 @@ function quienGano(posicionGanadora) {
   posicionGanadora.forEach(posicion => {
     cuadrados[posicion].classList.toggle("ganador", true);
   });
+  if(estadoJuego === "P1"){    
+    mostrarModal("Gano el Jugador: " + jugador1);
+    estadoJuego = "pausa";
+  }else if(estadoJuego === "P2"){
+    mostrarModal("Gano el Jugador: " + jugador2);
+    estadoJuego = "pausa";
+  }
 
-  mostrarModal("Gano el Jugador: " + estadoJuego);
-  estadoJuego = "pausa";
+  
 }
 
 function mostrarModal(texto) {
   textoModal.innerText = texto;
-  modal.showModal();
+  modal1.showModal();
 }
 
-modal.querySelector("button").addEventListener("click", () => {
+modal1.querySelector("button").addEventListener("click", () => {
   cuadrados.forEach(cuadrado => {
     cuadrado.textContent = "";
     cuadrado.classList.toggle("ganador", false);
-    modal.close();
+    modal1.close();
     estadoJuego = "P1";
+    console.clear();
+
   });
+});
+
+modal2.querySelector("button").addEventListener("click", () => {
+  guardarJugadores()
+  if(jugador1 === "" ||jugador2 === "") {
+    guardarJugadores()
+  }
+  modal2.close()
 });
