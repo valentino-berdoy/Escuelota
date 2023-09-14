@@ -35,7 +35,7 @@ h3{
     color: var(--color-primario);
 }
 
-input{
+.input{
     height: 25px;
     width: 300px;
     font-family: Arial, Helvetica, sans-serif;

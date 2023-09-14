@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Ta-Te-Ti</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Bienvenido al Ta-Te-Ti</h1>
     <h3>Nombre del Jugador "X"</h3>
-    <div class="contenedor"> 
-        <input type="text" id="p1" placeholder="Jugador X">
+
+    <div class="contenedor">
+      <input type="text" id="p1" placeholder="Jugador X" class="input" />
     </div>
+
     <h3>Nombre del Jugador "O"</h3>
-    <div class="contenedor"> 
-        <input type="text" id="p2" placeholder="Jugador O">
-    </div>
-    <br>
-    <div class="contenedor">    
-        <a href="juego.html">
-            <button class="botonJugar" id="jugadores" >Jugar</button>
-        </a>
+    <div class="contenedor">
+      <input type="text" id="p2" placeholder="Jugador O" class="input" />
     </div>
 
-</body>
-<script src="variables.js" defer></script>
-<script src="index.js" defer></script>
+    <br />
 
+    <div class="contenedor">
+        <button onclick="guardarJugadores()" class="botonJugar" id="jugadores">Jugar</button>
+    </div>
+
+  </body>
+  <script src="jugadores.js" defer></script>
 </html>

@@ -1,18 +1,29 @@
+function guardarJugadores() {
+  var inputElement1 = document.getElementById("p1").value;
+  var inputElement2 = document.getElementById("p2").value;
+
+  sessionStorage.setItem("inputElement1", inputElement1);
+  sessionStorage.setItem("inputElement2", inputElement2);
+  var jugador1 = sessionStorage.getItem("inputElement1");
+  var jugador2 = sessionStorage.getItem("inputElement2");
+
+  console.log("Nombre del Jugador X:", jugador1);
+  console.log("Nombre del Jugador O:", jugador2);
+  
+  // Redirigir a la página "juego.html"
+  window.location.href = "juego.html";
+}
+
 const cuadrados = Array.from(document.querySelectorAll(".cuadrado"));
 const modal = document.querySelector("dialog");
 const textoModal = modal.querySelector("h2");
 let estadoJuego = "P1";  
+const x = "X";
+const o = "O";
+
+guardarJugadores()
 
 
-document.addEventListener("DOMContentLoaded", function guardarJugadores() {
-  var txtP1 = document.getElementById("p1");
-  var txtP2 = document.getElementById("p2");
-  var boton = document.getElementById("jugadores");
-  const x = "X";
-  const o = "O";
-  
-
-});
 
 cuadrados.forEach(function(cuadrado, i) {
   cuadrado.addEventListener("click", function() {
@@ -92,14 +103,13 @@ function quienGano(posicionGanadora) {
     cuadrados[posicion].classList.toggle("ganador", true);
   });
 
-  
   mostrarModal("Gano el Jugador: " + estadoJuego);
   estadoJuego = "pausa";
 }
 
 function mostrarModal(texto) {
   textoModal.innerText = texto;
-  modal.setAttribute("open", "true"); // Agregar el atributo "open"
+  modal.showModal();
 }
 
 modal.querySelector("button").addEventListener("click", () => {
