@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Ta-Te-Ti</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Ta-Te-Ti</title>
 </head>
+
 <body>
-    <h1>Bienvenido al Ta-Te-Ti</h1>
-    <dialog type="modal" id="modalInicio" >
+  <h1>Bienvenido al Ta-Te-Ti</h1>
+  <dialog type="modal" id="modalInicio">
 
-        <h3>Nombre del Jugador "X"</h3>
+    <h3>Nombre del Jugador "X"</h3>
 
-        <div class="contenedor">
-          <input type="text" id="p1" placeholder="Jugador X" class="input" />
-        </div>
-    
-        <h3>Nombre del Jugador "O"</h3>
-        <div class="contenedor">
-          <input type="text" id="p2" placeholder="Jugador O" class="input" />
-        </div>
-    
-        <br />
-    
-        <div class="contenedor">
-          <button onclick="guardarJugadores()" class="botonJugar" id="jugadores">Jugar</button>
-        </div>
-
-    </dialog>
-   
-    <h4>Turno de:</h4>
-    <h4><span id="turno"></span></h4>
-    
-    <div id="tablero">
-        <div class="cuadrado arriba"></div>
-        <div class="cuadrado arriba medio"></div>
-        <div class="cuadrado arriba"></div>
-        <div class="cuadrado "></div>
-        <div class="cuadrado medio"></div>
-        <div class="cuadrado "></div>
-        <div class="cuadrado abajo"></div>
-        <div class="cuadrado abajo medio"></div>
-        <div class="cuadrado abajo"></div>
+    <div class="contenedor">
+      <input type="text" id="p1" placeholder="Jugador X" class="input" />
     </div>
 
-    <dialog type="modal" id="modalReinicio">
-        <h2></h2>
-        <button class="botonReiniciar">Reiniciar</button>
-    </dialog>
+    <h3>Nombre del Jugador "O"</h3>
+    <div class="contenedor">
+      <input type="text" id="p2" placeholder="Jugador O" class="input" />
+    </div>
+
+    <br />
+
+    <div class="contenedor">
+      <button onclick="guardarJugadores()" class="botonJugar" id="jugadores">Jugar</button>
+    </div>
+
+  </dialog>
+
+  <h4>Turno de:</h4>
+  <h4><span id="turno"></span></h4>
+
+  <div id="tablero">
+    <div class="cuadrado arriba"></div>
+    <div class="cuadrado arriba medio"></div>
+    <div class="cuadrado arriba"></div>
+    <div class="cuadrado "></div>
+    <div class="cuadrado medio"></div>
+    <div class="cuadrado "></div>
+    <div class="cuadrado abajo"></div>
+    <div class="cuadrado abajo medio"></div>
+    <div class="cuadrado abajo"></div>
+  </div>
+
+  <dialog type="modal" id="modalReinicio">
+    <h2></h2>
+    <button class="botonReiniciar">Reiniciar</button>
+  </dialog>
 
 </body>
 <script src="index.js" defer></script>
+
 </html>

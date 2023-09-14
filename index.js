@@ -2,46 +2,44 @@ const modal2 = document.getElementById("modalInicio");
 const cuadrados = Array.from(document.querySelectorAll(".cuadrado"));
 const modal1 = document.getElementById("modalReinicio");
 const textoModal = modal1.querySelector("h2");
-let estadoJuego = "P1";  
+let estadoJuego = "P1";
 const x = "X";
 const o = "O";
 turnito = document.getElementById("turno");
 
 modal2.showModal();
 
-
 cuadrados.forEach(function(cuadrado, i) {
   cuadrado.addEventListener("click", function() {
     if (estadoJuego != "pausa") {
       // Si el juego está en pausa, no hagas nada.
-          if (cuadrado.textContent === "") {
-      // Si el cuadrado está vacío, continúa.
-      if (estadoJuego === "P1") {
-        cuadrado.innerText = "X";
-        turnito.textContent = jugador2;
-      } else {
-        cuadrado.innerText = "O";
-        turnito.textContent = jugador1;
-      }
+      if (cuadrado.textContent === "") {
+        // Si el cuadrado está vacío, continúa.
+        if (estadoJuego === "P1") {
+          cuadrado.innerText = "X";
+          turnito.textContent = jugador2;
+        } else {
+          cuadrado.innerText = "O";
+          turnito.textContent = jugador1;
+        }
 
-      const ganador = siSeGano();
-      if (typeof ganador === "object") {
-        quienGano(ganador);
-        return;
-      }
+        const ganador = siSeGano();
+        if (typeof ganador === "object") {
+          quienGano(ganador);
+          return;
+        }
 
-      if (ganador === "empate") {
-        mostrarModal("Empataron :0");
-      }
+        if (ganador === "empate") {
+          mostrarModal1("Empataron :0");
+        }
 
-      if (estadoJuego === "P1") {
-        estadoJuego = "P2";
-      } else {
-        estadoJuego = "P1";
-      } // Alternar turnos.
+        if (estadoJuego === "P1") {
+          estadoJuego = "P2";
+        } else {
+          estadoJuego = "P1";
+        } // Alternar turnos.
+      }
     }
-    }
-
   });
 });
 
@@ -57,7 +55,7 @@ function guardarJugadores() {
   console.log("Nombre del Jugador X:", jugador1);
   console.log("Nombre del Jugador O:", jugador2);
 
-  return jugador1, jugador2
+  return jugador1, jugador2;
 }
 
 function siSeGano() {
@@ -94,6 +92,7 @@ function siSeGano() {
     return [2, 4, 6];
   }
 
+  //si hubo empate
   if (tablero.includes("")) return false;
   return "empate";
 }
@@ -103,18 +102,16 @@ function quienGano(posicionGanadora) {
   posicionGanadora.forEach(posicion => {
     cuadrados[posicion].classList.toggle("ganador", true);
   });
-  if(estadoJuego === "P1"){    
-    mostrarModal("Gano el Jugador: " + jugador1);
+  if (estadoJuego === "P1") {
+    mostrarModal1("Gano el Jugador: " + jugador1);
     estadoJuego = "pausa";
-  }else if(estadoJuego === "P2"){
-    mostrarModal("Gano el Jugador: " + jugador2);
+  } else if (estadoJuego === "P2") {
+    mostrarModal1("Gano el Jugador: " + jugador2);
     estadoJuego = "pausa";
   }
-
-  
 }
 
-function mostrarModal(texto) {
+function mostrarModal1(texto) {
   textoModal.innerText = texto;
   modal1.showModal();
 }
@@ -126,14 +123,23 @@ modal1.querySelector("button").addEventListener("click", () => {
     modal1.close();
     estadoJuego = "P1";
     console.clear();
-
   });
 });
 
 modal2.querySelector("button").addEventListener("click", () => {
-  guardarJugadores()
-  if(jugador1 === "" ||jugador2 === "") {
-    guardarJugadores()
+  if (jugador1 === "" || jugador2 === "") {
+    alert(
+      "Los nombres de los jugadores no pueden estar vacíos. Por favor, ingresa nombres válidos."
+    );
+    return; // Detén la ejecución si los nombres están vacíos
   }
-  modal2.close()
+
+  if (jugador1 === jugador2) {
+    alert(
+      "Los nombres de los jugadores no pueden ser iguales. Por favor, ingresa nombres diferentes."
+    );
+    return; // Detén la ejecución si los nombres son iguales
+  }
+
+  modal2.close();
 });
