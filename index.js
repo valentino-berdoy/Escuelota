@@ -7,8 +7,12 @@ const x = "X";
 const o = "O";
 turnito = document.getElementById("turno");
 
-modal2.showModal();
+// Llama a guardarJugadores() automáticamente al cargar la página
+window.addEventListener("DOMContentLoaded", function () {
+  guardarJugadores();
+});
 
+modal2.showModal();
 cuadrados.forEach(function(cuadrado, i) {
   cuadrado.addEventListener("click", function() {
     if (estadoJuego != "pausa") {
@@ -30,7 +34,7 @@ cuadrados.forEach(function(cuadrado, i) {
         }
 
         if (ganador === "empate") {
-          mostrarModal1("Empataron :0");
+          mostrarModal1("Empataron");
         }
 
         if (estadoJuego === "P1") {
@@ -43,14 +47,30 @@ cuadrados.forEach(function(cuadrado, i) {
   });
 });
 
+function mostrarTurno() {
+  if (estadoJuego === "P1") {
+    turnito.textContent = jugador1;
+  } else {
+    turnito.textContent = jugador2;
+  }
+}
+
+// Llama a mostrarTurno() después de cargar la página para establecer el turno inicial.
+window.addEventListener("DOMContentLoaded", function() {
+  mostrarTurno();
+});
+
+
 function guardarJugadores() {
   var inputElement1 = document.getElementById("p1").value;
   var inputElement2 = document.getElementById("p2").value;
 
   sessionStorage.setItem("inputElement1", inputElement1);
   sessionStorage.setItem("inputElement2", inputElement2);
-  jugador1 = sessionStorage.getItem("inputElement1");
-  jugador2 = sessionStorage.getItem("inputElement2");
+  jugador1 = inputElement1; // Asigna el valor a jugador1
+  jugador2 = inputElement2; // Asigna el valor a jugador2
+
+  mostrarTurno();
 
   console.log("Nombre del Jugador X:", jugador1);
   console.log("Nombre del Jugador O:", jugador2);

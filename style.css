@@ -5,12 +5,16 @@
 }
 
 body{
-    background-color: #333333;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     user-select: none;
+    opacity: 0,7;
 }
 
 h1{
     text-align: center;
+    -webkit-text-stroke: 2px var(--color-primario);
     font-size: 4rem;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--color-secundario);
@@ -18,12 +22,14 @@ h1{
 
 h2{
     font-family: Arial, Helvetica, sans-serif;
-    color: var(--color-primario);
+    color: var(--color-secundario);
+    -webkit-text-stroke: 1px var(--color-primario);
     font-size: 2rem;
     font-weight: normal;
     font-style: normal;
     letter-spacing: 0.5px;
     line-height: 1.5;
+    
 
 }
 
@@ -33,6 +39,7 @@ h3{
     font-size: 2rem;
     font-family: Helvetica, sans-serif;
     color: var(--color-primario);
+    
 }
 
 h4{
@@ -41,6 +48,7 @@ h4{
     font-size: 2rem;
     font-family: Helvetica, sans-serif;
     color: var(--color-secundario);
+    padding-left: 5px;
 }
 
 .input{
@@ -86,7 +94,15 @@ input::placeholder{
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
-  }  
+}  
+
+.contenedor2 {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    
+}  
+
 
 .botonJugar{
     display: flex;
@@ -118,6 +134,8 @@ input::placeholder{
 }
 
 .cuadrado{
+    background-color: #1E1E1EAA;
+    border-radius: 30px;
     color: var(--color-primario);
     height: 150px;
     width: 150px;
@@ -149,9 +167,10 @@ input::placeholder{
 
 dialog{
     text-align: center;
+    color: var(--color-secundario);
     min-width: 50vh;
     background-color: #17202AEE;
     padding: 5rem;
-    border: unset;
+    border: solid var(--color-primario);
     border-radius: 50px;
 }
